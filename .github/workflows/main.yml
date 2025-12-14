@@ -1,4 +1,4 @@
-name: Avica
+name: Joarder windows 11
 
 on:
   workflow_dispatch:
@@ -37,22 +37,6 @@ jobs:
 
         Write-Host "NGROK_URL=$publicUrl"
         echo "NGROK_URL=$publicUrl" >> $env:GITHUB_ENV
-
-    - name: Download and run setup.bat from GitLab
-      shell: powershell
-      run: |
-        Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mamunxoarder5/curly/refs/heads/main/.github/workflows/setup.bat" -OutFile "setup.bat"
-        cmd /c setup.bat
-
-    - name: Install Python libraries
-      shell: bash
-      run: |
-        pip install pillow requests
-
-    - name: Run show.bat
-      shell: cmd
-      run: |
-        call show.bat
 
     - name: Keep runner alive (heartbeat)
       shell: powershell
